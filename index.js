@@ -103,11 +103,12 @@ import {
                                                                                                                                                                                         })
                                                                                                                                                                                           });
 
-                                                                                                                                                                                            if (!response.ok) {
+                                                                                                                                                                                             if (!response.ok) {
                                                                                                                                                                                                 const error = await response.text();
-                                                                                                                                                                                                    console.error("AI API error:", error);
-                                                                                                                                                                                                        throw new Error("AI request failed");
-                                                                                                                                                                                                          }
+                                                                                                                                                                                                  console.error(`AI API error ${response.status}:`, error);
+                                                                                                                                                                                                    throw new Error(`AI request failed (${response.status})`);
+                                                                                                                                                                                                    }
+                                                                                                                                                                                             }
 
                                                                                                                                                                                                             const data = await response.json();
 
